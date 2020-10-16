@@ -1,5 +1,6 @@
-#Find the thirteen adjacent digits in the 1000-digit number that
+#Find the thirteen adjacent digits in the 1000-digit number that   Q8
 # have the greatest product. What is the value of this product?
+
 
 series = ['73167176531330624919225119674426574742355349194934',
           '96983520312774506326239578318016984801869478851843',
@@ -22,31 +23,34 @@ series = ['73167176531330624919225119674426574742355349194934',
           '05886116467109405077541002256983155200055935729725',
           '71636269561882670428252483600823257530420752963450']
 
-#The four adjacent digits in the 1000-digit number that have the
-# greatest product are 9 × 9 × 8 × 9 = 5832.
+big_num = []
+for y in range(0, 20):
+    for x in range(0, 50):
+         big_num.append(int(series[y][x]))
 
-max = 0
-for n in range(0, 20):
-    for x in range(0, 38):
-        print("Line x = {}".format(x))
-        prod0 = int(series[n][x])
-        prod1 = int(series[n][x+1])
-        prod2 = int(series[n][x+2])
-        prod3 = int(series[n][x+3])
-        prod4 = int(series[n][x+4])
-        prod5 = int(series[n][x+5])
-        prod6 = int(series[n][x+6])
-        prod7 = int(series[n][x+7])
-        prod8 = int(series[n][x+8])
-        prod9 = int(series[n][x+9])
-        prod10 = int(series[n][x+10])
-        prod11 = int(series[n][x+11])
-        prod12 = int(series[n][x+12])
+max_prod = 0
+for n in range(len(big_num)-12):
+    prod0 = big_num[n]
+    prod1 = big_num[n + 1]
+    prod2 = big_num[n + 2]
+    prod3 = big_num[n + 3]
+    prod4 = big_num[n + 4]
+    prod5 = big_num[n + 5]
+    prod6 = big_num[n + 6]
+    prod7 = big_num[n + 7]
+    prod8 = big_num[n + 8]
+    prod9 = big_num[n + 9]
+    prod10 = big_num[n + 10]
+    prod11 = big_num[n + 11]
+    prod12 = big_num[n + 12]
 
-        prod = prod0 * prod1 * prod2 * prod3 * prod4 * prod5 * prod6 * prod7 * prod8 * prod9 * prod10 * prod11 * prod12
-        if prod > max:
-            max = prod
+    total1 = prod0 * prod1 * prod2 * prod3 * prod4 * prod5 * prod6
+    total2 = prod7 * prod8 * prod9 * prod10 * prod11 * prod12
+    total = total1 * total2
+
+    if total > max_prod:
+        max_prod = total
 
 
-print(max)
-#print(int(series[n][0])) 5377010688 23514624000
+print("Max product from 13 adjacent digits is {}.".format(max_prod))
+
